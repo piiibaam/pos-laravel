@@ -20,14 +20,18 @@
             </thead>
 
             <tbody>
-                @foreach ($customers as $customer)
+                @forelse ($customers as $customer)
                     <tr>
-                        <td>{{ $customer['id'] }}</td>
-                        <td>{{ $customer['name'] }}</td>
-                        <td>{{ $customer['email'] }}</td>
-                        <td>{{ $customer['phone'] }}</td>
+                        <td>{{ $customer->id }}</td>
+                        <td>{{ $customer->full_name }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->phone }}</td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="4">No customers found.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
